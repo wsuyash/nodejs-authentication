@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/auth');
+const mongoDbUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/auth'
+
+mongoose.connect(mongoDbUri);
 
 const db = mongoose.connection;
 

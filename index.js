@@ -3,9 +3,11 @@ const expressLayouts = require('express-ejs-layouts');
 const db = require('./config/mongoose');
 const path = require('path');
 const PORT = process.env.PORT || 3000;
+const env = require('dotenv').config();
 
 const passport = require('passport');
 const passportLocal = require('./config/passport-local');
+const passportGoogle = require('./config/passport-google-oauth');
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
 
@@ -29,7 +31,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({
-	secret: 'some secret key',
+	secret: process.env.SESSION_SECRET,
 	cookie: {
     maxAge: 1000 * 60 * 60 * 24 * 7 // 1 week
   },
