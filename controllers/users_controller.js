@@ -2,41 +2,27 @@ const User = require('../models/User');
 const bcrypt = require('bcrypt');
 
 module.exports.login = (req, res) => {
+	if (req.isAuthenticated()) {
+		return res.redirect('/dashboard');
+	}
+
 	return res.render('login', {
 		title: 'Login'
 	});
 }
 
 module.exports.register = (req, res) => {
+	if (req.isAuthenticated()) {
+		return res.redirect('/dashboard');
+	}
+
 	return res.render('register', {
 		title: 'Register'
 	});
 }
 
-module.exports.createSession = async (req, res) => {
-	const { email, password } = req.body;
-
-	try {
-		const user = await User.findOne({ email });	
-
-		if (!user) {
-			console.log('Invalid email or password.');
-			return res.redirect('back');
-		}
-
-		const isMatch = await bcrypt.compare(password, user.password); 
-
-		if (!isMatch) {
-			console.log('Invalid email or password.');
-			return res.redirect('back');
-		}
-
-		return res.send('Successfully logged in.');
-
-	} catch (error) {
-		console.error(error);
-		return res.redirect('back');
-	}
+module.exports.createSession = (req, res) => {
+	return res.redirect('/dashboard');
 }
 
 module.exports.createUser = async (req, res) => {
@@ -71,4 +57,9 @@ module.exports.createUser = async (req, res) => {
 		console.error(error);
 		return res.redirect('back');	
 	}
+}
+
+module.exports.logout = (req, res) => {
+	req.logout();
+	return res.redirect('/');
 }
