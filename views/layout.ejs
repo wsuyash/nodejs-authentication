@@ -5,12 +5,30 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="shortcut icon" href="/images/authentication.png" type="image/x-icon">
-	<link rel="stylesheet" href="/styles/style.css">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+	<link href="/css/output.css" rel="stylesheet">
+
+	<%- style %>
 	<title><%= title %></title>
 </head>
-<body class="w-screen h-screen bg-gradient-to-b from-indigo-500 via-purple-500 to-pink-500">
+	<body class="w-screen h-screen overflow-hidden bg-gradient-to-b from-indigo-500 via-purple-500 to-pink-500">
 	
-	<%- body %>
+		<%- body %>
 
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+	<%- script %>
+
+	<script>
+		<% if (flash.success && flash.success.length > 0) { %>
+			toastr.success('<%= flash.success %>');
+		<% } %>
+		<% if (flash.error && flash.error.length > 0) { %>
+			toastr.error('<%= flash.error %>');
+		<% } %>
+	</script>
 </body>
 </html>

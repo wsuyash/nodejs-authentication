@@ -11,6 +11,9 @@ const passportGoogle = require('./config/passport-google-oauth');
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
 
+const flash = require('connect-flash');
+const flashMiddleware = require('./config/flash-middleware');
+
 const app = express();
 
 const store = new MongoDBStore({
@@ -43,8 +46,13 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(flash());
+app.use(flashMiddleware.setFlash);
+
 // EJS
 app.use(expressLayouts);
+app.set('layout extractStyles', true);
+app.set('layout extractScripts', true);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
@@ -52,5 +60,5 @@ app.set('views', path.join(__dirname, 'views'));
 app.use('/', require('./routes'));
 
 app.listen(PORT, () => {
-	console.log(`Server up and running on port ${PORT}`);
+	console.log(`Server up and running on port ${PORT} @ http://localhost:${PORT}`);
 });

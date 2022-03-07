@@ -1,4 +1,4 @@
-<!-- <h1>You have successfully signed in, <%= user.name.split(' ')[0]%>!</h1> -->
-<h1>You have successfully signed in, <%= user.name %>!</h1>
-
-<a href="/users/logout">Logout</a>
+<h1 class="mt-6 text-2xl text-white text-center">Hello, <%= user.name %>!</h1>
+<div class="text-center mx-auto my-8">
+	<a href="/users/logout" class="text-xl text-white py-2 px-4 border-[1px] rounded hover:bg-pink-700 hover:border-0">Logout</a>
+</div>

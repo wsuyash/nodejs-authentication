@@ -1,15 +1,7 @@
 module.exports = {
-	content: [
-		'./views/**/*.ejs',
-	],
-	purge: [
-		'./views/**/*.ejs',
-	],
+	content: ["./views/**/*.{ejs,html}"],
   theme: {
     extend: {},
   },
-  plugins: [
-		require('tailwindcss'),
-		require('autoprefixer')
-	],
+  plugins: [],
 }

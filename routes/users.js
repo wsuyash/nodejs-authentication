@@ -14,7 +14,7 @@ router.post('/create_user', usersController.createUser);
 
 router.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
-router.get('/auth/google/redirect', passport.authenticate('google', { failureRedirect: '/', successRedirect: '/dashboard' }));
+router.get('/auth/google/redirect', passport.authenticate('google', { failureRedirect: '/' }), usersController.createSession);
 
 router.get('/logout', usersController.logout);
 
