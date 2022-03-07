@@ -2,6 +2,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
+const fetch = require('node-fetch');
 
 passport.use(new LocalStrategy(
 	{
@@ -9,11 +10,23 @@ passport.use(new LocalStrategy(
 		passReqToCallback: true
 	}, 
 	async (req, email, password, done) => {
+		const responseKey = req.body['g-recaptcha-response'];
+		const secretKey = process.env.RECAPTCHA_SECRET_KEY;
+		const verifyUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${responseKey}`;
+
 		try {
+			const response = await fetch(verifyUrl);
+			const data = await response.json();
+
+			if (!data.success) {
+				req.flash('error', 'Invalid captcha. Please try again.');
+				return done(null, false);
+			}
+
 			const user = await User.findOne({ email });	
 
 			if (!user) {
-				console.log('User not found');
+				req.flash('error', 'Incorrect email or password.');
 				return done(null, false);
 			}
 
@@ -41,14 +54,12 @@ passport.deserializeUser(async (userId, done) => {
 		const user = await User.findById(userId);
 
 		if (!user) {
-			console.log('User could not be deserialized');
 			return done(null, false);
 		}
 
 		return done(null, user);
 
 	} catch (error) {
-		console.log(error);	
 		return done(error);
 	}
 });

@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
+const fetch = require('node-fetch');
 
 module.exports.login = (req, res) => {
 	if (req.isAuthenticated()) {
@@ -30,12 +31,24 @@ module.exports.createSession = (req, res) => {
 module.exports.createUser = async (req, res) => {
 	const { name, email, password, confirmPassword } = req.body;
 
+	const responseKey = req.body['g-recaptcha-response'];
+	const secretKey = process.env.RECAPTCHA_SECRET_KEY;
+	const verifyUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${responseKey}`;
+
 	if (password !== confirmPassword){
 		req.flash('error', 'Passwords do not match');
 		return res.redirect('back');
 	}
 
 	try {
+		const response = await fetch(verifyUrl);
+		const data = await response.json();
+
+		if (!data.success) {
+			req.flash('error', 'Invalid captcha. Please try again.');
+			return res.redirect('back');
+		}
+
 		const user = await User.findOne({ email });	
 
 		if (user) {
