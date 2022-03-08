@@ -1,6 +1,10 @@
-<div class="min-w-min absolute top-0 left-0 right-0 bottom-0 p-4 flex flex-col justify-center items-center gap-24">
+<div class="min-w-min absolute top-0 left-0 right-0 bottom-0 p-4 flex flex-col justify-center items-center gap-16">
 	<h1 class="text-9xl text-white">Hello, <b><%= user.name %></b>!</h1>
 	<div>
-		<a href="/users/logout" class="text-xl text-white py-2 px-4 border-[1px] rounded hover:bg-pink-700 hover:border-0">Logout</a>
+		<a href="/users/logout" class="py-2 px-4 text-xl text-white border-[1px] rounded hover:bg-pink-700 hover:border-0">Logout</a>
+		<br>
+	</div>
+	<div>
+		<a href="/dashboard/change_password" class="py-2 px-4 text-xl text-white border-[1px] rounded hover:bg-pink-700 hover:border-0">Change Password</a>
 	</div>
 </div>

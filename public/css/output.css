@@ -522,6 +522,18 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-bottom: 3rem;
 }
 
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
+.mb-20 {
+  margin-bottom: 5rem;
+}
+
+.mb-10 {
+  margin-bottom: 2.5rem;
+}
+
 .flex {
   display: flex;
 }
@@ -560,6 +572,18 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .w-80 {
   width: 20rem;
+}
+
+.w-14 {
+  width: 3.5rem;
+}
+
+.w-96 {
+  width: 24rem;
+}
+
+.w-40 {
+  width: 10rem;
 }
 
 .min-w-min {
@@ -602,6 +626,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .gap-24 {
   gap: 6rem;
+}
+
+.gap-16 {
+  gap: 4rem;
 }
 
 .overflow-hidden {
@@ -683,6 +711,16 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-9xl {
   font-size: 8rem;
   line-height: 1;
+}
+
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
 }
 
 .font-bold {
