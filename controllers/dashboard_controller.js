@@ -23,6 +23,11 @@ module.exports.resetPassword = async (req, res) => {
 		return res.redirect('back');
 	}
 
+	if (currentPassword === newPassword) {
+		req.flash('error', 'New password must be different from the current password.');
+		return res.redirect('back');
+	}
+
 	const user = req.user;
 
 	try {

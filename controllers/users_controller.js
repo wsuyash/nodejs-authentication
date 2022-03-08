@@ -66,11 +66,11 @@ module.exports.createUser = async (req, res) => {
 
 		await newUser.save();
 
-		req.flash('success', 'Registered Successfully! Please login to continue.');
+		req.flash('success', 'Registered Successfully! Login to continue.');
 		return res.redirect('/users/login');
 
 	} catch (error) {
-		console.error(error);
+		req.flash('error', error.message);
 		return res.redirect('back');	
 	}
 }
