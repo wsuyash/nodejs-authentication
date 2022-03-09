@@ -15,7 +15,8 @@ module.exports.login = (req, res) => {
 
 	// If user is not logged in, render login page
 	return res.render('login', {
-		title: 'Login'
+		title: 'Login',
+		recaptchaSiteKey: process.env.RECAPTCHA_SITE_KEY
 	});
 }
 
@@ -28,7 +29,8 @@ module.exports.register = (req, res) => {
 
 	// If user is not logged in, render register page
 	return res.render('register', {
-		title: 'Register'
+		title: 'Register',
+		recaptchaSiteKey: process.env.RECAPTCHA_SITE_KEY
 	});
 }
 
