@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const fetch = require('node-fetch');
+const resetPasswordMailer = require('../mailers/reset_password_mailer');
 
 module.exports.login = (req, res) => {
 	if (req.isAuthenticated()) {
@@ -73,6 +74,26 @@ module.exports.createUser = async (req, res) => {
 		req.flash('error', error.message);
 		return res.redirect('back');	
 	}
+}
+
+module.exports.forgotPassword = (req, res) => {
+	if (req.isAuthenticated()) {
+		return res.redirect('/dashboard');
+	}
+
+	return res.render('forgot-password', {
+		title: 'Forgot Password'
+	});
+}
+
+module.exports.resetPasswordLink = (req, res) => {
+	const { email } = req.body;
+
+	resetPasswordMailer.resetPasswordLink(email);
+
+	req.flash('success', 'Reset password link sent to email.');
+
+	return res.redirect('back');
 }
 
 module.exports.logout = (req, res) => {
