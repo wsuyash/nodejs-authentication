@@ -17,7 +17,7 @@ let renderTemplate = (data, relativePath) => {
 	let mailHtml;
 
 	ejs.renderFile(
-		path.join(__dirname, '../views/mailers', relativePath),
+		path.join(__dirname, '../views', relativePath),
 		data,
 		(err, template) => {
 			if (err) {

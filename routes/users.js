@@ -19,6 +19,9 @@ router.get('/auth/google/redirect', passport.authenticate('google', { failureRed
 router.get('/logout', usersController.logout);
 
 router.get('/forgot_password', usersController.forgotPassword);
+
+router.get('/reset_password/:id/:token', usersController.validateResetPassword);
 router.post('/reset_password_link', usersController.resetPasswordLink);
+router.post('/reset_password/:id/:token', usersController.resetPassword);
 
 module.exports = router;

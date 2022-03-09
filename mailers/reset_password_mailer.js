@@ -1,12 +1,14 @@
 const nodeMailer = require('../config/nodemailer');
 
-module.exports.resetPasswordLink = (email) => {
+module.exports.resetPasswordLink = (user, resetLink) => {
+	let htmlString = nodeMailer.renderTemplate({ user: user, link: resetLink  }, '/mailers/reset_password.ejs');
+
 	nodeMailer.transporter.sendMail(
 		{
 			from: `Nodejs Authentication ${process.env.EMAIL}`,
-			to: email,
-			subject: 'New Mail Test',
-			html: '<h1>Does this work?</h1>'
+			to: user.email,
+			subject: 'Reset Password',
+			html: htmlString
 		},
 		(err, info) => {
 			if (err) {
