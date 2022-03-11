@@ -107,5 +107,5 @@ npm start
     ├── register.ejs
     └── reset-password.ejs
 
-10 directories, 33 file
+10 directories, 33 files
 ```
