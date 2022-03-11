@@ -239,7 +239,7 @@ module.exports.resetPasswordLink = async (req, res) => {
 		const token = jwt.sign(payload, secret, { expiresIn: '15m' });
 
 		// Create reset password link
-		const resetLink = `http://localhost:3000/users/reset_password/${user._id}/${token}`;
+		const resetLink = `${process.env.RESET_LINK || process.env.RESET_LINK_LOCAL}/users/reset_password/${user._id}/${token}`;
 
 		// Send email
 		resetPasswordMailer.resetPasswordLink(user, resetLink);
