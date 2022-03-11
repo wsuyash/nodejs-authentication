@@ -1,30 +1,30 @@
-<div class="mx-auto absolute top-0 left-0 right-0 bottom-0 flex flex-col justify-center items-center gap-4">
-	<div class="w-[10rem] h-[10rem] mb-12">
-		<img src="/images/login.png" alt="Login logo.">
-	</div>
+<div class="absolute top-0 left-0 right-0 bottom-0 flex flex-col justify-center items-center gap-1 md:gap-4">
+	<img src="/images/login.png" alt="Login logo." class="w-20 md:w-40 h-20 md:h-40">
 	<form action="/users/create_session" method="post" class="flex flex-col justify-center items-center gap-4">
-		<input class="w-96 p-2" type="text" name="email" id="email" placeholder="Email" required>
-		<input class="w-96 p-2" type="password" name="password" id="password" placeholder="Password" required>
-		<a class="self-start underline text-white" href="/users/forgot_password">Forgot password?</a>
+		<input class="w-72 md:w-96 p-2" type="text" name="email" id="email" placeholder="Email" required>
+		<input class="w-72 md:w-96 p-2" type="password" name="password" id="password" placeholder="Password" required>
+		<div>
+			<a class="underline text-white" href="/users/forgot_password">Forgot password?</a>
+		</div>
 		<br>
 		<div class="g-recaptcha" data-sitekey="<%= recaptchaSiteKey %>"></div>
     <br/>
-		<button class="w-80 p-2 text-2xl text-white bg-blue-700 rounded hover:bg-blue-800" type="submit">Log In</button>
+		<button class="w-72 md:w-96 p-2 text-base md:text-2xl text-white bg-blue-700 rounded hover:bg-blue-800" type="submit">Log In</button>
 	</form>
-	<div class="w-96 flex justify-between items-center gap-4">
+	<div class="w-72 md:w-96 flex justify-between items-center gap-4">
 	<div class="h-[1px] w-[15rem] border-[1px] border-white"></div>
 	<p class="text-2xl text-white text-center">or</p>
 	<div class="h-[1px] w-[15rem] border-[1px] border-white"></div>
 	</div>
 	<a href="/users/auth/google">
-		<button class="flex justify-center items-center gap-4 w-[20rem] p-2 text-2xl text-white bg-blue-700 rounded hover:bg-blue-800" type="submit">
-			<img src="/images/google-logo.png" alt="Google logo." height="32px" width="32px">
+		<button class="flex justify-center items-center gap-4 w-72 md:w-96 p-2 text-base md:text-2xl text-white bg-blue-700 rounded hover:bg-blue-800" type="submit">
+			<img src="/images/google-logo.png" alt="Google logo." class="w-6 md:w-8 h-6 md:h-8">
 			<p>Sign In with Google</p>
 		</button>
 	</a>
-	<p class="text-xl text-white font-bold mt-10">Don't have an account?</p>
+	<p class="text-base md:text-xl text-white font-bold md:mt-10">Don't have an account?</p>
 	<a href="/users/register">
-		<button class="flex justify-center items-center gap-4 w-[20rem] p-2 text-2xl text-white bg-blue-700 rounded hover:bg-blue-800" type="submit">
+		<button class="flex justify-center items-center gap-4 w-72 md:w-96 p-2 text-base md:text-2xl text-white bg-blue-700 rounded hover:bg-blue-800" type="submit">
 			Sign Up
 		</button>
 	</a>
