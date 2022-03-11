@@ -51,7 +51,7 @@ EMAIL_PASSWORD=<password for the email mentioned above>
 
 RESET_LINK_LOCAL=http://localhost:3000
 ```
-4. ### Start The Server:
+### 4. Start The Server:
 ```
 npm start
 ```
