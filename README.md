@@ -46,7 +46,7 @@ RECAPTCHA_SITE_KEY=<get this from Google's reCaptcha website>
 RECAPTCHA_SECRET_KEY=<get this from Google's reCaptcha website>
 
 EMAIL=<gmail you'll use to send mails to users> Ex: abc@gmail.com
-EMAIL_USERNAME=<gmail usersname> Ex: abc
+EMAIL_USERNAME=<gmail username> Ex: abc
 EMAIL_PASSWORD=<password for the email mentioned above>
 
 RESET_LINK_LOCAL=http://localhost:3000
