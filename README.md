@@ -8,9 +8,6 @@ Authenticate users using local (email/password) and Google authentication.
 4. Tailwind CSS
 5. MongoDB
 
-# Hosting
-This project is hosted at: https://sw-node-auth.herokuapp.com/
-
 # Run This Project Locally
 ## Prerequisites
 1. Install node and npm.
